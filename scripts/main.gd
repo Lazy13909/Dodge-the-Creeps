@@ -9,6 +9,7 @@ func _ready():
 	$UI.update_high_score(load_best_result())
 
 func new_game():
+	$UI/BestResult.hide()
 	score = 0
 	$Player.show()
 	$Player.start($StartPosition.position)
@@ -55,14 +56,17 @@ func game_over():
 	
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	
 	$UI.show_game_over()
+	$UI/BestResult.show()
+	
 	$Music.stop()
 	$DeathSound.play()
 	
 func save_best_result(best_score_to_save):
 	var file = FileAccess.open("user://best_result.dat", FileAccess.WRITE)
 	if file:
-		file.store_string(best_score_to_save)
+		file.store_string(str(best_score_to_save))
 	else:
 		print("Error saving best result")
 		
