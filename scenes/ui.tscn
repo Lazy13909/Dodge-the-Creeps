@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwkgdr2wmpp61"]
+
+[ext_resource type="Script" path="res://scripts/UI.gd" id="1_mujgg"]
+[ext_resource type="FontFile" uid="uid://bwnq738dq38x0" path="res://fonts/Xolonium-Regular.ttf" id="2_28htr"]
+[ext_resource type="Texture2D" uid="uid://byd7f1qdujdc2" path="res://art/ui/heart.png" id="3_thdrn"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_mujgg")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_28htr")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_28htr")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the Creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_28htr")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Health" type="Node2D" parent="."]
+
+[node name="HealthOne" type="TextureRect" parent="Health"]
+offset_right = 1333.0
+offset_bottom = 1333.0
+scale = Vector2(0.03, 0.03)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_thdrn")
+
+[node name="HealthTwo" type="TextureRect" parent="Health"]
+offset_left = 40.0
+offset_right = 1373.0
+offset_bottom = 1333.0
+scale = Vector2(0.03, 0.03)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_thdrn")
+
+[node name="HealthThree" type="TextureRect" parent="Health"]
+offset_left = 80.0
+offset_right = 1413.0
+offset_bottom = 1333.0
+scale = Vector2(0.03, 0.03)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_thdrn")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

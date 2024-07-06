@@ -48,9 +48,12 @@ func _on_body_entered(body):
 
 func take_damage(amount):
 	current_health -= 1
-	print(current_health)
 	if current_health <= 0:
 		hide()
 		hit.emit()
-		current_health = max_health 
+		current_health = max_health
+	if current_health > 0:
+		update_health_ui()
 
+func update_health_ui():
+	get_node("/root/Main/UI").take_damage()
