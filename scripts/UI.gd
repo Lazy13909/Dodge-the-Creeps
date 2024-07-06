@@ -11,7 +11,6 @@ func _ready():
 	health.append($Health/HealthOne)
 	health.append($Health/HealthTwo)
 	health.append($Health/HealthThree)
-	
 
 func show_message(text):
 	$Message.text = text
@@ -21,6 +20,9 @@ func show_message(text):
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
+func update_high_score(score):
+	$BestResult.text = str(score)
+	
 func take_damage():
 	if current_health > 0:
 		current_health -= 1

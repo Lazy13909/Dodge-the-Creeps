@@ -12,7 +12,6 @@ func _ready():
 
 func start(pos):
 	position = pos
-	show()
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -44,16 +43,13 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
-		take_damage(1)
+		take_damage()
 
-func take_damage(amount):
+func take_damage():
 	current_health -= 1
 	if current_health <= 0:
 		hide()
 		hit.emit()
 		current_health = max_health
 	if current_health > 0:
-		update_health_ui()
-
-func update_health_ui():
-	get_node("/root/Main/UI").take_damage()
+		get_node("/root/Main/UI").take_damage()
