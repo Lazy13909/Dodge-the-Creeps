@@ -9,7 +9,6 @@ func _ready():
 	$UI.update_high_score(load_best_result())
 
 func new_game():
-	$UI/BestResult.hide()
 	score = 0
 	$Player.show()
 	$Player.start($StartPosition.position)
@@ -20,6 +19,8 @@ func new_game():
 	$UI.update_score(score)
 	$UI.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
+	$UI/BestResult.hide()
+	$UI/QuitButton.hide()
 	
 	$Music.play()
 	
